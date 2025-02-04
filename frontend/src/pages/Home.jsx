@@ -99,9 +99,9 @@ const Home = () => {
   return (
     <div className="w-screen">
       <Navbar />
-      <div className="flex px-8 py-5 gap-5">
+      <div className="flex px-8 gap-3">
         {/* Sidebar */}
-        <div className="w-[200px] py-4 box-shadow rounded-md h-[85vh]">
+        <div className="w-[200px] border-r-[1px] border-slate-300 py-4 h-[calc(100vh-70px)]">
           <div className="px-3 space-y-3">
             <button
               className="btn-primary"
@@ -132,8 +132,8 @@ const Home = () => {
         </div>
 
         {/* Main Content */}
-        <div className="box-shadow rounded-md flex-1">
-          <div className="pt-4 px-4">
+        <div className="flex-1">
+          <div className="px-4 pt-4">
             <p className="text-lg">👋 Hello, {user?.name}!</p>
           </div>
           <div className="py-2 px-4">
