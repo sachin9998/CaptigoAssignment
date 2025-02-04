@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     // Clear authentication data
     localStorage.removeItem("token");
@@ -15,7 +18,12 @@ const Navbar = () => {
         <span className="text-gray-800">APP.</span>
       </div>
       <div>
-        <button className="btn-primary bg-red-500 p-2 px-4 rounded-full">Logout</button>
+        <button
+          onClick={handleLogout}
+          className="btn-primary bg-red-500 p-2 px-4 rounded-full"
+        >
+          Logout
+        </button>
       </div>
     </div>
   );

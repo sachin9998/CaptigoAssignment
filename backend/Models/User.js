@@ -16,12 +16,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    enrolledCourses: [
+    enrollCourses: [
       {
-        course: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Course",
-        },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Course",
       },
     ],
   },
@@ -30,4 +28,4 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-export const User = mongoose.model("User", userSchema);
+export const User = mongoose.models.User || mongoose.model("User", userSchema);

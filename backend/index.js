@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import express from "express";
 import connectDB from "./db.js";
 import authRouter from "./Routes/auth.route.js";
+import courseRouter from "./Routes/course.route.js";
 dotenv.config();
 
 const port = process.env.PORT || 4000;
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/auth", authRouter);
+app.use("/course", courseRouter);
 
 // Server listening
 app.listen(3000, (req, res) => {

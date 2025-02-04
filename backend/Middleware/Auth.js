@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-import { User } from "../Models/User";
+import { User } from "../models/User.js";
 
-export const verifyJWT = async (req, res) => {
+export const verifyJWT = async (req, res, next) => {
   const token = req.header("Authorization")?.replace("Bearer ", "");
 
   if (!token) {
@@ -14,9 +14,11 @@ export const verifyJWT = async (req, res) => {
   try {
     const decodedData = jwt.verify(token, process.env.JWT_SECRET);
 
-    console.log("decodedData :", decodedData);
+    // console.log("decodedData :", decodedData);
 
-    const user = await User.findById(decodedToken?._id).select("-password");
+    const user = await User.findById(decodedData?.userId).select("-password");
+
+    // console.log("USER :", user);
 
     if (!user) {
       return res.status(401).json({
@@ -27,6 +29,7 @@ export const verifyJWT = async (req, res) => {
 
     req.user = user;
 
+    // console.log("Verification Started::: ");
     next();
   } catch (error) {
     return res.status(401).json({

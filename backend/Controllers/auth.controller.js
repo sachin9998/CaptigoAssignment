@@ -80,3 +80,40 @@ export const login = async (req, res) => {
     });
   }
 };
+
+export const fetchUserDetails = async (req, res) => {
+  try {
+    const { userId } = req.params; // Get userId from request params
+
+    // Validate userId
+    if (!userId) {
+      return res.status(400).json({
+        success: false,
+        message: "User ID is required",
+      });
+    }
+
+    // Fetch user details excluding the password
+    const user = await User.findById(userId).select("-password");
+
+    // Check if user exists
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: user,
+    });
+  } catch (error) {
+    console.error("Error fetching user details:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: error.message,
+    });
+  }
+};
