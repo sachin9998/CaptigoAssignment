@@ -36,6 +36,7 @@ const SearchModal = ({ isOpen, onClose }) => {
       if (result.success) {
         setCurrentCourse(result.data);
         setError("");
+        setCourseCode(null);
         handleSuccess("Course found successfully!");
       } else {
         setCurrentCourse(null);

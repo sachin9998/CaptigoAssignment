@@ -66,6 +66,17 @@ const CourseModal = ({ isOpen, onClose, userId, fetchAllCourses }) => {
         fetchAllCourses();
         handleSuccess("Course created successfully!");
         onClose(); // Close modal after success
+
+        const emptyCourseData = {
+          title: "",
+          code: "",
+          description: "",
+          instructor: userId,
+          category: "",
+          price: "",
+        };
+
+        setCourseData(emptyCourseData);
       } else {
         handleSuccess(data.message);
       }
