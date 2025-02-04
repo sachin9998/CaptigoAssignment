@@ -102,9 +102,11 @@ const Home = () => {
       <div className="flex px-8 gap-3">
         {/* Sidebar */}
         <div className="w-[200px] border-r-[1px] border-slate-300 py-4 h-[calc(100vh-70px)]">
-          <div className="px-3 space-y-3">
+          <div className="flex flex-col items-center gap-2 pr-3">
             <button
-              className="btn-primary"
+              className={`btn-primary ${
+                viewMode === "allCourses" ? "bg-blue-600 text-white" : ""
+              }`}
               onClick={() => setViewMode("allCourses")}
             >
               All Courses
@@ -116,7 +118,9 @@ const Home = () => {
               Create Course
             </button>
             <button
-              className="btn-primary"
+              className={`btn-primary ${
+                viewMode === "enrolledCourses" ? "bg-blue-600 text-white" : ""
+              }`}
               onClick={() => setViewMode("enrolledCourses")}
             >
               Enrolled Courses
