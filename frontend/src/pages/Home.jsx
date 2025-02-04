@@ -143,14 +143,18 @@ const Home = () => {
                 : "All Courses List"}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {displayedCourses.map((course) => (
-                <Card
-                  key={course._id}
-                  course={course}
-                  user={user}
-                  enrollCourse={enrollCourse}
-                />
-              ))}
+              {displayedCourses.length > 0 ? (
+                displayedCourses.map((course) => (
+                  <Card
+                    key={course._id}
+                    course={course}
+                    user={user}
+                    enrollCourse={enrollCourse}
+                  />
+                ))
+              ) : (
+                <div className="text-3xl">No Courses Found!</div>
+              )}
             </div>
           </div>
         </div>
