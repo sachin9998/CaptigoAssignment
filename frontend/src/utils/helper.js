@@ -6,7 +6,7 @@ export const validateEmail = (email) => {
   return regex.test(email);
 };
 
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "https://captigoassignment.onrender.com";
 
 export const handleSuccess = (msg) => {
   toast.success(msg);
